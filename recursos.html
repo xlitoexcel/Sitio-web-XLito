@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inscripción — XLito</title>
+<title>Recursos gratis — XLito</title>
 <link rel="stylesheet" href="styles.css">
 <style>
-  .form-card{max-width:620px; margin:0 auto; border:1px solid var(--line); border-radius:16px; padding:44px; background:var(--bg-alt);}
-  .form-row{display:grid; grid-template-columns:1fr; gap:16px;}
-  @media(min-width:600px){.form-row.two{grid-template-columns:1fr 1fr;}}
-  .form-card label{display:block; font-size:13px; color:var(--ink-soft); margin-bottom:6px;}
-  .form-card input,.form-card select,.form-card textarea{width:100%; padding:12px 13px; border:1px solid var(--line); border-radius:8px; font-size:14px; font-family:var(--sans); background:#fff;}
-  .form-card textarea{min-height:90px; resize:vertical;}
-  .form-card .field{margin-bottom:18px;}
-  .form-card .btn{width:100%; text-align:center; margin-top:6px;}
-  .form-note{font-size:12px; color:var(--muted); margin-top:14px; text-align:center;}
+  .lead-box{display:grid; grid-template-columns:1fr; gap:32px; align-items:center; background:var(--ink); color:#fff; border-radius:16px; padding:48px; max-width:900px; margin:0 auto;}
+  @media(min-width:760px){.lead-box{grid-template-columns:1.1fr .9fr;}}
+  .lead-box h2{color:#fff; font-size:26px; margin-bottom:14px;}
+  .lead-box p{color:#cfcfcf; font-size:15px; margin-bottom:0;}
+  .lead-form{background:#fff; border-radius:12px; padding:26px; color:var(--ink);}
+  .lead-form label{display:block; font-size:12px; margin:14px 0 6px; color:var(--ink-soft);}
+  .lead-form input{width:100%; padding:11px 12px; border:1px solid var(--line); border-radius:8px; font-size:14px; font-family:var(--sans);}
+  .lead-form .btn{width:100%; margin-top:18px; text-align:center;}
+  .privacy-note{max-width:900px; margin:20px auto 0; font-size:12px; color:var(--muted); text-align:center;}
 </style>
 </head>
 <body>
@@ -35,53 +35,42 @@
           <a href="faq.html">Preguntas frecuentes</a>
         </div>
         <div><p class="nav-group-title">Empieza</p>
-          <a href="recursos.html">Recursos gratis</a>
-          <a href="inscripcion.html" class="current">Inscripción</a>
+          <a href="recursos.html" class="current">Recursos gratis</a>
+          <a href="inscripcion.html">Inscripción</a>
         </div>
       </div>
     </div>
+    <a href="inscripcion.html" class="btn">Inscríbete</a>
   </div>
 </nav>
 
 <header class="page-hero">
   <div class="wrap">
-    <p class="eyebrow">Último paso</p>
-    <h1>Inscríbete al curso</h1>
-    <p>Llena el formulario y te contactamos por correo o WhatsApp para confirmar tu lugar.</p>
+    <p class="eyebrow">Antes de inscribirte</p>
+    <h1>Prueba la calidad del contenido, gratis</h1>
+    <p>Una guía corta de atajos y trucos de Excel, para que veas cómo enseñamos antes de inscribirte a un nivel completo.</p>
   </div>
 </header>
 
 <section>
   <div class="wrap">
-    <form class="form-card" action="https://formsubmit.co/xlito.excel@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="Nueva inscripción — XLito">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" value="gracias.html">
+    <div class="lead-box">
+      <div>
+        <h2>Descarga una muestra gratis de nuestro material</h2>
+        <p>Te la enviamos por correo o WhatsApp. Cero compromiso — es solo para que veas la calidad antes de decidir.</p>
+      </div>
+      <form class="lead-form" action="https://formsubmit.co/xlito.excel@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Nuevo lead — guia gratis XLito">
+        <input type="hidden" name="_next" value="gracias.html">
       <input type="hidden" name="_captcha" value="false">
-      <div class="form-row two">
-        <div class="field"><label for="nombre">Nombre completo</label><input id="nombre" name="Nombre" type="text" required></div>
-        <div class="field"><label for="edad">Edad</label><input id="edad" name="Edad" type="number" min="1" required></div>
-      </div>
-      <div class="form-row two">
-        <div class="field"><label for="correo">Correo electrónico</label><input id="correo" name="Correo" type="email" required></div>
-        <div class="field"><label for="telefono">WhatsApp</label><input id="telefono" name="WhatsApp" type="tel" required></div>
-      </div>
-      <div class="field">
-        <label for="nivel">Nivel que te interesa</label>
-        <select id="nivel" name="Nivel de interes">
-          <option>Introductorio</option>
-          <option>Básico</option>
-          <option>Intermedio</option>
-          <option>Aún no lo sé, quiero que me orienten</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="comentarios">Cuéntanos un poco de ti (opcional)</label>
-        <textarea id="comentarios" name="Comentarios" placeholder="¿Por qué quieres aprender Excel? ¿Alguna experiencia previa?"></textarea>
-      </div>
-      <button class="btn" type="submit">Enviar inscripción</button>
-      <p class="form-note">Al enviar este formulario, te contactaremos por correo o WhatsApp en menos de 48 horas.</p>
-    </form>
+        <label for="lead-nombre">Nombre</label>
+        <input id="lead-nombre" name="Nombre" type="text" placeholder="Tu nombre" required>
+        <label for="lead-correo">Correo o WhatsApp</label>
+        <input id="lead-correo" name="Correo o WhatsApp" type="text" placeholder="correo@ejemplo.com" required>
+        <button class="btn" type="submit">Enviarme la guía gratis</button>
+      </form>
+    </div>
+    <p class="privacy-note">Solo usamos tu correo o WhatsApp para enviarte este material y, si nos autorizas, futuras promociones de XLito. No lo compartimos con nadie más.</p>
   </div>
 </section>
 
