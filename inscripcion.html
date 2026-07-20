@@ -55,6 +55,7 @@
   <div class="wrap">
     <form class="form-card" id="inscripcion-form" action="https://formsubmit.co/ajax/xlito.excel@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="Nueva inscripción — XLito">
+      <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
       <div class="form-row two">
         <div class="field"><label for="nombre">Nombre completo</label><input id="nombre" name="Nombre" type="text" required></div>
@@ -98,12 +99,7 @@
       headers: { 'Accept': 'application/json' }
     }).then(function(res){
       if(res.ok){
-        form.reset();
-        form.style.display = 'none';
-        status.style.display = 'block';
-        status.style.color = 'var(--ink)';
-        status.style.fontSize = '16px';
-        status.innerHTML = '<strong>¡Gracias por inscribirte!</strong><br>Te contactaremos por correo o WhatsApp en menos de 48 horas.';
+        window.location.href = 'gracias.html';
       } else {
         throw new Error('Error en el envío');
       }

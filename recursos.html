@@ -61,6 +61,7 @@
       </div>
       <form class="lead-form" id="lead-form" action="https://formsubmit.co/ajax/xlito.excel@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="Nuevo lead — guia gratis XLito">
+        <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
         <label for="lead-nombre">Nombre</label>
         <input id="lead-nombre" name="Nombre" type="text" placeholder="Tu nombre" required>
@@ -85,11 +86,7 @@
           headers: { 'Accept': 'application/json' }
         }).then(function(res){
           if(res.ok){
-            leadForm.reset();
-            leadBtn.style.display = 'none';
-            leadStatus.style.display = 'block';
-            leadStatus.style.color = 'var(--ink)';
-            leadStatus.textContent = '¡Listo! Te contactaremos con la guía en breve.';
+            window.location.href = 'gracias.html';
           } else { throw new Error('error'); }
         }).catch(function(){
           leadBtn.disabled = false;
