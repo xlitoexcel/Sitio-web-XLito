@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cómo funciona — XLito</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .steps{display:grid; grid-template-columns:1fr; gap:20px;}
+  @media(min-width:760px){.steps{grid-template-columns:repeat(4,1fr);}}
+  .step{border:1px solid var(--line); border-radius:var(--radius); padding:24px 20px;}
+  .step .step-num{font-family:var(--serif); font-size:26px; color:var(--muted); margin-bottom:10px;}
+  .step h3{font-size:16px; margin-bottom:8px; font-family:var(--sans); font-weight:600;}
+  .step p{font-size:13px; color:var(--ink-soft);}
+
+  .req-grid{display:grid; grid-template-columns:1fr; gap:16px;}
+  @media(min-width:700px){.req-grid{grid-template-columns:repeat(2,1fr);}}
+  .req-item{display:flex; gap:14px; padding:16px 18px; border:1px solid var(--line); border-radius:var(--radius); background:var(--bg-alt);}
+  .req-item .dot{width:8px; height:8px; border-radius:50%; background:var(--ink); margin-top:6px; flex-shrink:0;}
+  .req-item strong{display:block; font-size:14px; margin-bottom:2px;}
+  .req-item span{font-size:13px; color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="logo-mark">XLito <span>· Excel</span></a>
+    <div class="nav-menu">
+      <button class="nav-menu-btn" id="nav-menu-btn" aria-expanded="false" aria-controls="nav-panel">Explorar el sitio <span class="chev">▾</span></button>
+      <div class="nav-panel" id="nav-panel">
+        <div><p class="nav-group-title">El curso</p>
+          <a href="niveles.html">Niveles, temarios y precios</a>
+          <a href="como-funciona.html" class="current">Cómo funciona</a>
+        </div>
+        <div><p class="nav-group-title">Conócenos</p>
+          <a href="nosotros.html">Sobre XLito</a>
+          <a href="testimonios.html">Testimonios</a>
+          <a href="faq.html">Preguntas frecuentes</a>
+        </div>
+        <div><p class="nav-group-title">Empieza</p>
+          <a href="recursos.html">Recursos gratis</a>
+          <a href="inscripcion.html">Inscripción</a>
+        </div>
+      </div>
+    </div>
+    <a href="inscripcion.html" class="btn">Inscríbete</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">El proceso</p>
+    <h1>Cómo funciona XLito</h1>
+    <p>De la inscripción a tu primera clase, sin sorpresas.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="steps">
+      <div class="step"><div class="step-num">01</div><h3>Te inscribes</h3><p>Llenas el formulario con tus datos y el nivel que te interesa.</p></div>
+      <div class="step"><div class="step-num">02</div><h3>Confirmamos tu lugar</h3><p>Te contactamos por correo o WhatsApp en menos de 48 horas para coordinar el pago y resolver dudas.</p></div>
+      <div class="step"><div class="step-num">03</div><h3>Firmamos el contrato</h3><p>Un contrato de prestación de servicios que protege tanto a ti como al instructor.</p></div>
+      <div class="step"><div class="step-num">04</div><h3>Empiezas el sábado</h3><p>Recibes el enlace de Discord y acceso a Google Classroom antes de tu primera sesión.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg-alt);">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Antes de inscribirte</p>
+      <h2>Lo que necesitas para tomar el curso</h2>
+    </div>
+    <div class="req-grid">
+      <div class="req-item"><span class="dot"></span><div><strong>Computadora con Excel</strong><span>Instalado, versión 2016 o superior recomendado.</span></div></div>
+      <div class="req-item"><span class="dot"></span><div><strong>Conexión a internet estable</strong><span>Para tomar las sesiones sin interrupciones.</span></div></div>
+      <div class="req-item"><span class="dot"></span><div><strong>Discord instalado</strong><span>Es donde se imparten las sesiones en vivo.</span></div></div>
+      <div class="req-item"><span class="dot"></span><div><strong>Cuenta de Google</strong><span>Para acceder a Google Classroom (materiales y tareas).</span></div></div>
+      <div class="req-item"><span class="dot"></span><div><strong>3 horas cada sábado y domingo</strong><span>Las sesiones se imparten en ese horario.</span></div></div>
+      <div class="req-item"><span class="dot"></span><div><strong>Ganas de practicar entre sesiones</strong><span>El progreso real viene de la práctica, no solo de ver la clase.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo-mark">XLito</div>
+    <div class="socials"><a href="https://www.instagram.com/xlito_excel" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@xlito_excel" target="_blank" rel="noopener">TikTok</a><a href="https://www.facebook.com/profile.php?id=61592092803394" target="_blank" rel="noopener">Facebook</a></div>
+    <p style="font-size:13px; color:var(--ink-soft);"><a href="mailto:xlito.excel@gmail.com">xlito.excel@gmail.com</a> &nbsp;·&nbsp; <a href="https://wa.me/525567896394?text=Hola%2C%20me%20interesa%20el%20curso%20de%20Excel%20de%20XLito" target="_blank" rel="noopener">Escríbenos por WhatsApp</a></p>
+    <p class="fine">© 2026 XLito. Con XLito, tu Excel abre puertas.</p>
+  </div>
+</footer>
+<script src="nav.js"></script>
+</body>
+</html>

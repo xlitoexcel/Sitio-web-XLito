@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preguntas frecuentes — XLito</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .faq-list{max-width:760px; margin:0 auto; display:flex; flex-direction:column; gap:12px;}
+  .faq-item{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+  .faq-q{width:100%; text-align:left; background:none; border:none; padding:18px 22px; font-size:15px; font-family:var(--sans); font-weight:600; color:var(--ink); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px;}
+  .faq-q:hover{background:var(--bg-alt);}
+  .faq-q .chev{font-size:11px; color:var(--muted); transition:transform .2s ease; flex-shrink:0;}
+  .faq-q[aria-expanded="true"] .chev{transform:rotate(180deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+  .faq-a p{padding:0 22px 18px; font-size:14px; color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="logo-mark">XLito <span>· Excel</span></a>
+    <div class="nav-menu">
+      <button class="nav-menu-btn" id="nav-menu-btn" aria-expanded="false" aria-controls="nav-panel">Explorar el sitio <span class="chev">▾</span></button>
+      <div class="nav-panel" id="nav-panel">
+        <div><p class="nav-group-title">El curso</p>
+          <a href="niveles.html">Niveles, temarios y precios</a>
+          <a href="como-funciona.html">Cómo funciona</a>
+        </div>
+        <div><p class="nav-group-title">Conócenos</p>
+          <a href="nosotros.html">Sobre XLito</a>
+          <a href="testimonios.html">Testimonios</a>
+          <a href="faq.html" class="current">Preguntas frecuentes</a>
+        </div>
+        <div><p class="nav-group-title">Empieza</p>
+          <a href="recursos.html">Recursos gratis</a>
+          <a href="inscripcion.html">Inscripción</a>
+        </div>
+      </div>
+    </div>
+    <a href="inscripcion.html" class="btn">Inscríbete</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Dudas comunes</p>
+    <h1>Preguntas frecuentes</h1>
+    <p>Si tu duda no está aquí, escríbenos desde el formulario de inscripción.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="faq-list" id="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Necesito saber algo de Excel antes de empezar? <span class="chev">▾</span></button>
+        <div class="faq-a"><p>No, el nivel Introductorio está diseñado para quien nunca ha usado Excel o le tiene miedo. Empezamos desde la interfaz básica.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Qué pasa si falto a una sesión? <span class="chev">▾</span></button>
+        <div class="faq-a"><p>Todas las sesiones se graban y se comparten con el grupo, así que puedes ponerte al día viendo la grabación. Si necesitas cancelar el curso, aplica la política de reembolsos según el momento en que lo hagas — la puedes revisar en el contrato.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Cómo pago el curso? <span class="chev">▾</span></button>
+        <div class="faq-a"><p>Aceptamos efectivo y transferencia. Pagando de contado en una sola exhibición tienes descuento; si prefieres facilidades de pago, también es posible, sin descuento.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Puedo tomar el curso si soy menor de edad? <span class="chev">▾</span></button>
+        <div class="faq-a"><p>Sí, aceptamos menores de edad siempre que un padre, madre o tutor firme el contrato y autorice su participación.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Las clases quedan grabadas? ¿Quién las ve? <span class="chev">▾</span></button>
+        <div class="faq-a"><p>Sí, se graban con tu consentimiento y se comparten únicamente con el grupo de tu generación, no se publican en ningún otro lugar.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Recibo algún tipo de constancia al terminar? <span class="chev">▾</span></button>
+        <div class="faq-a"><p>Sí, al concluir cada nivel recibes una constancia de participación de XLito con el detalle del nivel cursado y las horas completadas.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Puedo inscribirme directo a nivel Básico o Intermedio? <span class="chev">▾</span></button>
+        <div class="faq-a"><p>Sí, si ya tienes experiencia previa puedes platicarnos tu nivel en el formulario de inscripción y te orientamos sobre el punto de partida más adecuado.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo-mark">XLito</div>
+    <div class="socials"><a href="https://www.instagram.com/xlito_excel" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@xlito_excel" target="_blank" rel="noopener">TikTok</a><a href="https://www.facebook.com/profile.php?id=61592092803394" target="_blank" rel="noopener">Facebook</a></div>
+    <p style="font-size:13px; color:var(--ink-soft);"><a href="mailto:xlito.excel@gmail.com">xlito.excel@gmail.com</a> &nbsp;·&nbsp; <a href="https://wa.me/525567896394?text=Hola%2C%20me%20interesa%20el%20curso%20de%20Excel%20de%20XLito" target="_blank" rel="noopener">Escríbenos por WhatsApp</a></p>
+    <p class="fine">© 2026 XLito. Con XLito, tu Excel abre puertas.</p>
+  </div>
+</footer>
+<script src="nav.js"></script>
+<script>
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var answer = item.querySelector('.faq-a');
+      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      answer.style.maxHeight = isOpen ? '0px' : answer.scrollHeight + 'px';
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Niveles y precios — XLito</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .levels{display:grid; grid-template-columns:1fr; gap:20px;}
+  @media(min-width:760px){.levels{grid-template-columns:repeat(3,1fr);}}
+  .level-card{grid-column:span 1; border:1px solid var(--line); border-radius:var(--radius); padding:32px 26px; background:var(--bg); display:flex; flex-direction:column; gap:14px;}
+  .level-card.expanded{grid-column:1 / -1;}
+  .level-card.expanded .lvl-top{display:grid; grid-template-columns:1fr; gap:14px;}
+  @media(min-width:760px){.level-card.expanded .lvl-top{grid-template-columns:260px 1fr;}}
+  .level-card .lvl-name{font-family:var(--serif); font-size:22px;}
+  .level-card .lvl-meta{font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em;}
+  .level-card ul{list-style:none; font-size:14px; color:var(--ink-soft); display:flex; flex-direction:column; gap:8px;}
+  .level-card ul li{padding-left:18px; position:relative;}
+  .level-card ul li::before{content:"—"; position:absolute; left:0; color:var(--muted);}
+  .level-card .lvl-hours{padding-top:14px; border-top:1px solid var(--line); font-size:13px; color:var(--muted); display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;}
+  .toggle-syllabus{background:none; border:1px solid var(--line); border-radius:999px; padding:7px 14px; font-size:12px; font-family:var(--sans); color:var(--ink-soft); cursor:pointer; display:inline-flex; align-items:center; gap:6px; white-space:nowrap;}
+  .toggle-syllabus:hover{background:var(--bg-alt);}
+  .toggle-syllabus .chev{transition:transform .2s ease; font-size:10px;}
+  .toggle-syllabus[aria-expanded="true"] .chev{transform:rotate(180deg);}
+  .syllabus{grid-column:1 / -1; margin-top:8px; border-top:1px solid var(--line); padding-top:24px; display:none;}
+  .syllabus.open{display:block;}
+  .syllabus-grid{display:grid; grid-template-columns:1fr; gap:10px;}
+  @media(min-width:700px){.syllabus-grid{grid-template-columns:1fr 1fr;}}
+  .syl-row{display:flex; gap:14px; padding:12px 14px; border:1px solid var(--line); border-radius:8px; background:var(--bg-alt); font-size:13px;}
+  .syl-row .syl-num{font-family:var(--serif); font-size:15px; color:var(--muted); min-width:26px; flex-shrink:0;}
+  .syl-row .syl-content strong{display:block; font-size:13px; color:var(--ink); margin-bottom:2px;}
+  .syl-row .syl-content span{color:var(--ink-soft); font-size:12px;}
+  .dl-row{margin-top:16px;}
+  .dl-link{display:inline-flex; align-items:center; gap:6px; font-size:13px; color:var(--ink-soft); text-decoration:none; border:1px solid var(--line); border-radius:999px; padding:8px 16px;}
+  .dl-link:hover{background:var(--bg-alt); color:var(--ink);}
+
+  .price-table{width:100%; border-collapse:collapse; font-size:14px;}
+  .price-table th,.price-table td{padding:16px 14px; text-align:left; border-bottom:1px solid var(--line);}
+  .price-table th{font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-weight:600;}
+  .price-table td.num{font-variant-numeric:tabular-nums;}
+  .promo-box{margin-top:32px; padding:26px 28px; border-radius:var(--radius); background:var(--bg-alt); border:1px solid var(--line);}
+  .promo-box h3{font-family:var(--serif); font-size:19px; margin-bottom:10px;}
+  .promo-box p{font-size:14px; color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="logo-mark">XLito <span>· Excel</span></a>
+    <div class="nav-menu">
+      <button class="nav-menu-btn" id="nav-menu-btn" aria-expanded="false" aria-controls="nav-panel">Explorar el sitio <span class="chev">▾</span></button>
+      <div class="nav-panel" id="nav-panel">
+        <div><p class="nav-group-title">El curso</p>
+          <a href="niveles.html" class="current">Niveles, temarios y precios</a>
+          <a href="como-funciona.html">Cómo funciona</a>
+        </div>
+        <div><p class="nav-group-title">Conócenos</p>
+          <a href="nosotros.html">Sobre XLito</a>
+          <a href="testimonios.html">Testimonios</a>
+          <a href="faq.html">Preguntas frecuentes</a>
+        </div>
+        <div><p class="nav-group-title">Empieza</p>
+          <a href="recursos.html">Recursos gratis</a>
+          <a href="inscripcion.html">Inscripción</a>
+        </div>
+      </div>
+    </div>
+    <a href="inscripcion.html" class="btn">Inscríbete</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Programa</p>
+    <h1>Tres niveles, un mismo objetivo</h1>
+    <p>Avanza a tu ritmo. Cada nivel se puede tomar por separado o en conjunto — y cada temario está disponible para descargar.</p>
+  </div>
+</header>
+
+<section id="niveles">
+  <div class="wrap">
+    <div class="levels" id="levels-grid">
+
+      <div class="level-card" data-level="introductorio">
+        <div class="lvl-top">
+          <div><span class="lvl-meta">Nivel 1</span><span class="lvl-name">Introductorio</span></div>
+          <ul>
+            <li>Interfaz y navegación de Excel</li>
+            <li>Formato de celdas y figuras</li>
+            <li>Fórmulas simples y referencias</li>
+            <li>Errores comunes y cómo resolverlos</li>
+          </ul>
+        </div>
+        <div class="lvl-hours">
+          <span>24 horas · 8 sesiones</span>
+          <button class="toggle-syllabus" aria-expanded="false">Ver temario completo <span class="chev">▾</span></button>
+        </div>
+        <div class="syllabus">
+          <div class="syllabus-grid">
+            <div class="syl-row"><span class="syl-num">01</span><div class="syl-content"><strong>Interfaz de Excel</strong><span>Cinta de opciones, barra de acceso rápido, libro vs. hoja</span></div></div>
+            <div class="syl-row"><span class="syl-num">02</span><div class="syl-content"><strong>Figuras e inserción</strong><span>Formas, cuadros de texto, imágenes — práctica libre</span></div></div>
+            <div class="syl-row"><span class="syl-num">03</span><div class="syl-content"><strong>Selección y edición</strong><span>Rangos, autorrelleno, deshacer/rehacer, atajos básicos</span></div></div>
+            <div class="syl-row"><span class="syl-num">04</span><div class="syl-content"><strong>Formato de celdas</strong><span>Bordes, relleno, alineación, combinar celdas</span></div></div>
+            <div class="syl-row"><span class="syl-num">05</span><div class="syl-content"><strong>Congelar paneles</strong><span>Repaso y consolidación de lo visto</span></div></div>
+            <div class="syl-row"><span class="syl-num">06</span><div class="syl-content"><strong>Fórmulas simples</strong><span>Suma, resta, multiplicación, referencias de celda</span></div></div>
+            <div class="syl-row"><span class="syl-num">07</span><div class="syl-content"><strong>Práctica de fórmulas</strong><span>Errores comunes: #REF!, #VALOR!, #DIV/0!</span></div></div>
+            <div class="syl-row"><span class="syl-num">08</span><div class="syl-content"><strong>Cierre del nivel</strong><span>Formatos de archivo, guardar vs. guardar como, proyecto final</span></div></div>
+          </div>
+          <div class="dl-row"><a class="dl-link" href="pdfs/XLito-Temario-Introductorio.pdf" download>⬇ Descargar temario en PDF</a></div>
+        </div>
+      </div>
+
+      <div class="level-card" data-level="basico">
+        <div class="lvl-top">
+          <div><span class="lvl-meta">Nivel 2</span><span class="lvl-name">Básico</span></div>
+          <ul>
+            <li>Funciones esenciales (SUMA, SI, CONTAR.SI...)</li>
+            <li>Formato condicional y validación de datos</li>
+            <li>Funciones de texto y fechas</li>
+            <li>Gráficos y atajos de teclado</li>
+          </ul>
+        </div>
+        <div class="lvl-hours">
+          <span>48 horas · 16 sesiones</span>
+          <button class="toggle-syllabus" aria-expanded="false">Ver temario completo <span class="chev">▾</span></button>
+        </div>
+        <div class="syllabus">
+          <div class="syllabus-grid">
+            <div class="syl-row"><span class="syl-num">01</span><div class="syl-content"><strong>Ordenar y filtrar</strong><span>Trabajo con tablas (Ctrl+T)</span></div></div>
+            <div class="syl-row"><span class="syl-num">02</span><div class="syl-content"><strong>Imprimir y márgenes</strong><span>Configuración de página</span></div></div>
+            <div class="syl-row"><span class="syl-num">03</span><div class="syl-content"><strong>Funciones esenciales I</strong><span>SUMA, PROMEDIO, CONTAR</span></div></div>
+            <div class="syl-row"><span class="syl-num">04</span><div class="syl-content"><strong>Funciones esenciales II</strong><span>SI, Y, O</span></div></div>
+            <div class="syl-row"><span class="syl-num">05</span><div class="syl-content"><strong>Referencias y fechas</strong><span>Relativas/absolutas ($), formato básico de fecha</span></div></div>
+            <div class="syl-row"><span class="syl-num">06</span><div class="syl-content"><strong>Funciones condicionales</strong><span>CONTAR.SI, SUMAR.SI, SI.ERROR</span></div></div>
+            <div class="syl-row"><span class="syl-num">07</span><div class="syl-content"><strong>Formato condicional</strong><span>Resaltar datos según reglas</span></div></div>
+            <div class="syl-row"><span class="syl-num">08</span><div class="syl-content"><strong>Validación de datos</strong><span>Listas y reglas de entrada</span></div></div>
+            <div class="syl-row"><span class="syl-num">09</span><div class="syl-content"><strong>Gráficos básicos</strong><span>Barras, líneas, pastel</span></div></div>
+            <div class="syl-row"><span class="syl-num">10</span><div class="syl-content"><strong>Funciones de texto I</strong><span>CONCATENAR, "&", MAYUSC/minusc, NOMPROPIO</span></div></div>
+            <div class="syl-row"><span class="syl-num">11</span><div class="syl-content"><strong>Funciones de texto II</strong><span>IZQUIERDA/DERECHA, ESPACIOS, ÚNICOS</span></div></div>
+            <div class="syl-row"><span class="syl-num">12</span><div class="syl-content"><strong>Práctica extendida</strong><span>Refuerzo de funciones de texto</span></div></div>
+            <div class="syl-row"><span class="syl-num">13</span><div class="syl-content"><strong>Atajos de teclado</strong><span>Agilizando el trabajo diario</span></div></div>
+            <div class="syl-row"><span class="syl-num">14</span><div class="syl-content"><strong>Consolidación</strong><span>Repaso general del nivel</span></div></div>
+            <div class="syl-row"><span class="syl-num">15</span><div class="syl-content"><strong>Práctica libre</strong><span>Dudas y caso integrador guiado</span></div></div>
+            <div class="syl-row"><span class="syl-num">16</span><div class="syl-content"><strong>Cierre del nivel</strong><span>Proyecto final integrador</span></div></div>
+          </div>
+          <div class="dl-row"><a class="dl-link" href="pdfs/XLito-Temario-Basico.pdf" download>⬇ Descargar temario en PDF</a></div>
+        </div>
+      </div>
+
+      <div class="level-card" data-level="intermedio">
+        <div class="lvl-top">
+          <div><span class="lvl-meta">Nivel 3</span><span class="lvl-name">Intermedio</span></div>
+          <ul>
+            <li>BUSCARV, BUSCARX e ÍNDICE/COINCIDIR</li>
+            <li>Tablas dinámicas y gráficos dinámicos</li>
+            <li>Funciones lógicas y de fecha avanzadas</li>
+            <li>Macros grabadas y vínculos entre hojas</li>
+          </ul>
+        </div>
+        <div class="lvl-hours">
+          <span>54+ horas · 18+ sesiones</span>
+          <button class="toggle-syllabus" aria-expanded="false">Ver temario completo <span class="chev">▾</span></button>
+        </div>
+        <div class="syllabus">
+          <div class="syllabus-grid">
+            <div class="syl-row"><span class="syl-num">01</span><div class="syl-content"><strong>BUSCARV</strong><span>Búsqueda de datos entre tablas y hojas</span></div></div>
+            <div class="syl-row"><span class="syl-num">02</span><div class="syl-content"><strong>BUSCARX a fondo</strong><span>La evolución de BUSCARV/BUSCARH — más flexible y directa</span></div></div>
+            <div class="syl-row"><span class="syl-num">03</span><div class="syl-content"><strong>ÍNDICE/COINCIDIR</strong><span>Otra filosofía de búsqueda, más flexible</span></div></div>
+            <div class="syl-row"><span class="syl-num">04</span><div class="syl-content"><strong>Práctica comparada</strong><span>BUSCARV vs. ÍNDICE/COINCIDIR</span></div></div>
+            <div class="syl-row"><span class="syl-num">05</span><div class="syl-content"><strong>Tablas dinámicas I</strong><span>Crear tablas: filas, columnas, valores, filtros</span></div></div>
+            <div class="syl-row"><span class="syl-num">06</span><div class="syl-content"><strong>Tablas dinámicas II</strong><span>Segmentadores, agrupar datos, formato de valores</span></div></div>
+            <div class="syl-row"><span class="syl-num">07</span><div class="syl-content"><strong>Gráficos dinámicos</strong><span>Y nombres de rango</span></div></div>
+            <div class="syl-row"><span class="syl-num">08</span><div class="syl-content"><strong>Condiciones múltiples</strong><span>SUMAR.SI.CONJUNTO, CONTAR.SI.CONJUNTO</span></div></div>
+            <div class="syl-row"><span class="syl-num">09</span><div class="syl-content"><strong>SI anidado</strong><span>Combinando varias condiciones</span></div></div>
+            <div class="syl-row"><span class="syl-num">10</span><div class="syl-content"><strong>Práctica lógica</strong><span>Funciones condicionales combinadas</span></div></div>
+            <div class="syl-row"><span class="syl-num">11</span><div class="syl-content"><strong>Funciones de fecha I</strong><span>HOY, AÑO/MES/DÍA</span></div></div>
+            <div class="syl-row"><span class="syl-num">12</span><div class="syl-content"><strong>Funciones de fecha II</strong><span>DIAS.LAB y diferencia entre fechas</span></div></div>
+            <div class="syl-row"><span class="syl-num">13</span><div class="syl-content"><strong>CARACTER y CÓDIGO</strong><span>Funciones de texto ligadas a Unicode</span></div></div>
+            <div class="syl-row"><span class="syl-num">14</span><div class="syl-content"><strong>Macros grabadas I</strong><span>Grabar una macro y ejecutarla</span></div></div>
+            <div class="syl-row"><span class="syl-num">15</span><div class="syl-content"><strong>Macros grabadas II</strong><span>Editar macros y casos de uso reales</span></div></div>
+            <div class="syl-row"><span class="syl-num">16</span><div class="syl-content"><strong>Vínculos entre hojas</strong><span>Y entre libros</span></div></div>
+            <div class="syl-row"><span class="syl-num">17</span><div class="syl-content"><strong>Consolidación</strong><span>Práctica general del nivel</span></div></div>
+            <div class="syl-row"><span class="syl-num">18</span><div class="syl-content"><strong>Cierre del nivel</strong><span>Proyecto final integrador</span></div></div>
+          </div>
+          <div class="dl-row"><a class="dl-link" href="pdfs/XLito-Temario-Intermedio.pdf" download>⬇ Descargar temario en PDF</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="precios" style="background:var(--bg-alt);">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Inversión</p>
+      <h2>Precios claros, sin sorpresas</h2>
+      <p>Pagando de contado tienes descuento. Entre más niveles tomes junto, más ahorras.</p>
+    </div>
+    <table class="price-table">
+      <thead><tr><th>Nivel</th><th>Horas</th><th>Precio de lista</th><th>Costo por hora</th></tr></thead>
+      <tbody>
+        <tr><td>Introductorio</td><td class="num">24 h</td><td class="num">$1,000 MXN</td><td class="num">$41.7/h</td></tr>
+        <tr><td>Básico</td><td class="num">48 h</td><td class="num">$2,000 MXN</td><td class="num">$41.7/h</td></tr>
+        <tr><td>Intermedio</td><td class="num">54 h</td><td class="num">$3,150 MXN</td><td class="num">$58.3/h</td></tr>
+      </tbody>
+    </table>
+    <div class="promo-box">
+      <h3>Descuentos por pago de contado</h3>
+      <p>10% pagando 1 nivel completo · 15% pagando 2 niveles juntos · 20% pagando los 3 niveles juntos. Suma un 5% extra si terminas con asistencia perfecta, todas las tareas y 10 en tu proyecto final.</p>
+    </div>
+    <div class="promo-box">
+      <h3>Promoción fundadora — grupo piloto</h3>
+      <p>Por ser parte de los primeros alumnos de XLito: 50% de descuento en Introductorio, 40% en Básico y 30% en Intermedio.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo-mark">XLito</div>
+    <div class="socials"><a href="https://www.instagram.com/xlito_excel" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@xlito_excel" target="_blank" rel="noopener">TikTok</a><a href="https://www.facebook.com/profile.php?id=61592092803394" target="_blank" rel="noopener">Facebook</a></div>
+    <p style="font-size:13px; color:var(--ink-soft);"><a href="mailto:xlito.excel@gmail.com">xlito.excel@gmail.com</a> &nbsp;·&nbsp; <a href="https://wa.me/525567896394?text=Hola%2C%20me%20interesa%20el%20curso%20de%20Excel%20de%20XLito" target="_blank" rel="noopener">Escríbenos por WhatsApp</a></p>
+    <p class="fine">© 2026 XLito. Con XLito, tu Excel abre puertas.</p>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+<script>
+  document.querySelectorAll('.toggle-syllabus').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var card = btn.closest('.level-card');
+      var panel = card.querySelector('.syllabus');
+      var isOpen = panel.classList.toggle('open');
+      card.classList.toggle('expanded', isOpen);
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      btn.innerHTML = isOpen ? 'Ocultar temario <span class="chev">▾</span>' : 'Ver temario completo <span class="chev">▾</span>';
+    });
+  });
+</script>
+</body>
+</html>
