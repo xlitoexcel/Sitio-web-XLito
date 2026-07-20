@@ -59,44 +59,18 @@
         <h2>Descarga una muestra gratis de nuestro material</h2>
         <p>Te la enviamos por correo o WhatsApp. Cero compromiso — es solo para que veas la calidad antes de decidir.</p>
       </div>
-      <form class="lead-form" id="lead-form" action="https://formsubmit.co/ajax/xlito.excel@gmail.com" method="POST">
+      <form class="lead-form" action="https://formsubmit.co/xlito.excel@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="Nuevo lead — guia gratis XLito">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://xlitoexcel.github.io/Sitio-web-XLito/gracias.html">
         <label for="lead-nombre">Nombre</label>
         <input id="lead-nombre" name="Nombre" type="text" placeholder="Tu nombre" required>
         <label for="lead-correo">Correo o WhatsApp</label>
         <input id="lead-correo" name="Correo o WhatsApp" type="text" placeholder="correo@ejemplo.com" required>
-        <button class="btn" type="submit" id="lead-submit-btn">Enviarme la guía gratis</button>
-        <p style="font-size:12px; margin-top:10px; display:none;" id="lead-status"></p>
+        <button class="btn" type="submit">Enviarme la guía gratis</button>
       </form>
     </div>
-
-    <script>
-      var leadForm = document.getElementById('lead-form');
-      var leadBtn = document.getElementById('lead-submit-btn');
-      var leadStatus = document.getElementById('lead-status');
-      leadForm.addEventListener('submit', function(e){
-        e.preventDefault();
-        leadBtn.disabled = true;
-        leadBtn.textContent = 'Enviando...';
-        fetch(leadForm.action, {
-          method: 'POST',
-          body: new FormData(leadForm),
-          headers: { 'Accept': 'application/json' }
-        }).then(function(res){
-          if(res.ok){
-            window.location.href = 'gracias.html';
-          } else { throw new Error('error'); }
-        }).catch(function(){
-          leadBtn.disabled = false;
-          leadBtn.textContent = 'Enviarme la guía gratis';
-          leadStatus.style.display = 'block';
-          leadStatus.style.color = '#b23a3a';
-          leadStatus.textContent = 'Hubo un problema al enviar. Intenta de nuevo.';
-        });
-      });
-    </script>
     <p class="privacy-note">Solo usamos tu correo o WhatsApp para enviarte este material y, si nos autorizas, futuras promociones de XLito. No lo compartimos con nadie más.</p>
   </div>
 </section>

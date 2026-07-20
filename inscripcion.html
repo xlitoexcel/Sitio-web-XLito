@@ -53,10 +53,11 @@
 
 <section>
   <div class="wrap">
-    <form class="form-card" id="inscripcion-form" action="https://formsubmit.co/ajax/xlito.excel@gmail.com" method="POST">
+    <form class="form-card" action="https://formsubmit.co/xlito.excel@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="Nueva inscripción — XLito">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://xlitoexcel.github.io/Sitio-web-XLito/gracias.html">
       <div class="form-row two">
         <div class="field"><label for="nombre">Nombre completo</label><input id="nombre" name="Nombre" type="text" required></div>
         <div class="field"><label for="edad">Edad</label><input id="edad" name="Edad" type="number" min="1" required></div>
@@ -78,40 +79,11 @@
         <label for="comentarios">Cuéntanos un poco de ti (opcional)</label>
         <textarea id="comentarios" name="Comentarios" placeholder="¿Por qué quieres aprender Excel? ¿Alguna experiencia previa?"></textarea>
       </div>
-      <button class="btn" type="submit" id="inscripcion-submit-btn">Enviar inscripción</button>
+      <button class="btn" type="submit">Enviar inscripción</button>
       <p class="form-note">Al enviar este formulario, te contactaremos por correo o WhatsApp en menos de 48 horas.</p>
-      <p class="form-note" id="inscripcion-status" style="display:none;"></p>
     </form>
   </div>
 </section>
-
-<script>
-  var form = document.getElementById('inscripcion-form');
-  var btn = document.getElementById('inscripcion-submit-btn');
-  var status = document.getElementById('inscripcion-status');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    btn.disabled = true;
-    btn.textContent = 'Enviando...';
-    fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    }).then(function(res){
-      if(res.ok){
-        window.location.href = 'gracias.html';
-      } else {
-        throw new Error('Error en el envío');
-      }
-    }).catch(function(){
-      btn.disabled = false;
-      btn.textContent = 'Enviar inscripción';
-      status.style.display = 'block';
-      status.style.color = '#b23a3a';
-      status.textContent = 'Hubo un problema al enviar. Intenta de nuevo o escríbenos directo por WhatsApp.';
-    });
-  });
-</script>
 
 <footer>
   <div class="wrap">
