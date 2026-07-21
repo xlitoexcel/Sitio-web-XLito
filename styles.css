@@ -58,7 +58,29 @@ footer .wrap{display:flex; flex-direction:column; gap:16px; align-items:center; 
 footer .socials{display:flex; gap:18px; font-size:14px; color:var(--ink-soft);}
 footer .fine{font-size:12px; color:var(--muted);}
 
-.card{border:1px solid var(--line); border-radius:var(--radius); padding:28px 26px; background:var(--bg);}
+.card{border:1px solid var(--line); border-radius:var(--radius); padding:28px 26px; background:var(--bg); transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;}
+
+@media (prefers-reduced-motion: no-preference){
+  .card:hover, .level-card:hover, .teaser:hover, .step:hover, .value-chip:hover, .req-item:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 24px rgba(0,0,0,.06);
+    border-color:var(--muted);
+  }
+  .btn{ transition:opacity .15s ease, transform .15s ease; }
+  .btn:active{ transform:scale(.97); }
+  .nav-menu-btn, .toggle-syllabus, .dl-link{ transition:background .2s ease, transform .15s ease; }
+
+  .reveal-init{ opacity:0; transform:translateY(18px); transition:opacity .55s ease, transform .55s ease; }
+  .reveal-in{ opacity:1; transform:translateY(0); }
+
+  .hero, .page-hero{ opacity:0; transform:translateY(10px); }
+  .hero.hero-in, .page-hero{ animation:hero-rise .6s ease forwards; }
+  .page-hero{ animation-delay:.05s; }
+  @keyframes hero-rise{ to{ opacity:1; transform:translateY(0); } }
+}
+@media (prefers-reduced-motion: reduce){
+  .reveal-init{ opacity:1; transform:none; }
+}
 
 .visually-hidden{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0);}
 @media (prefers-reduced-motion: reduce){ *{transition:none !important;} }

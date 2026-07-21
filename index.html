@@ -52,7 +52,7 @@
 <header class="hero">
   <div class="wrap">
     <p class="eyebrow">Cursos de Excel en línea · Fines de semana</p>
-    <h1>Con XLito, tu Excel abre puertas</h1>
+    <h1 id="hero-title"><span id="hero-title-text"></span><span id="hero-cursor" style="opacity:1;">|</span></h1>
     <p class="lead">Aprende Excel desde cero, a tu ritmo, los sábados y domingos. Grupos pequeños, precios accesibles y un instructor que te acompaña en cada paso.</p>
     <div class="cta-row">
       <a href="inscripcion.html" class="btn">Inscríbete al curso</a>
@@ -104,5 +104,34 @@
 </footer>
 
 <script src="nav.js"></script>
+<script src="effects.js"></script>
+<script>
+(function(){
+  var text = 'Con XLito, tu Excel abre puertas';
+  var el = document.getElementById('hero-title-text');
+  var cursor = document.getElementById('hero-cursor');
+  if(!el) return;
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    el.textContent = text;
+    cursor.style.display = 'none';
+    return;
+  }
+  var i = 0;
+  function type(){
+    if(i <= text.length){
+      el.textContent = text.slice(0, i);
+      i++;
+      setTimeout(type, 28);
+    } else {
+      cursor.style.animation = 'blink 1s step-end infinite';
+    }
+  }
+  setTimeout(type, 250);
+})();
+</script>
+<style>
+@keyframes blink{ 50%{ opacity:0; } }
+#hero-cursor{ font-weight:300; }
+</style>
 </body>
 </html>
